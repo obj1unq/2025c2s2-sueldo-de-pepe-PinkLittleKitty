@@ -32,7 +32,7 @@ Pepe tiene un bono por resultados que va cambiando a lo largo del tiempo. Sabemo
 
 Al igual que el Bono por resultados, Pepe posee un bono por presentismo que puede variar mes a mes. Existen varios **bonos por presentismo**:</br>
 * _Normal_: $2000 pesos si la persona a quien se aplica no faltó nunca, $1000 si faltó sólo un día, $0 en cualquier otro caso. 
-* _Ajuste_: $100 pesos si el empleado no faltón nunca, $0 en cualquier otro caso. 
+* _Ajuste_: $100 pesos si el empleado no faltó nunca, $0 en cualquier otro caso. 
 * _Demagógico_: $500 pesos si el neto es menor a 18000, $300 en caso contrario. Para este bono no importa cuántas veces faltó el emplado.
 * _Nulo_: nada. 
 
