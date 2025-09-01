@@ -2,9 +2,25 @@ import pepe.*
 
 describe "Sueldo Pepe" {
 	
-	test "Test 1" {
-		//TODO: Implementame
+	test "Test 1" { 
+		pepe.categoría(cadete)
+		pepe.faltas(3)
+		assert.equals(20800, pepe.sueldo("fijo", "normal"))
 	}
 
-	
+	test "Test 2" { 
+		pepe.categoría(gerente)
+		pepe.faltas(0)
+		assert.equals(16500, pepe.sueldo("porcentaje", "nulo"))
+	}
+	test "Test 3" { 
+		pepe.categoría(cadete)
+		pepe.faltas(0)
+		assert.equals(24000, pepe.sueldo("porcentaje", "normal"))
+	}
+	test "Test 4" { 
+		pepe.categoría(cadete)
+		pepe.faltas(1)
+		assert.equals(23000, pepe.sueldo("porcentaje", "normal"))
+	}
 }

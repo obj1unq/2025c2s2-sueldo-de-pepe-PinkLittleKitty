@@ -1,6 +1,8 @@
+import wollok.vm.*
 object pepe {
     var faltas = 0
-    var categoría = neto.cadete()
+    var categoría = cadete
+    var sueldo = 0
 
     method categoría(_categoría)
     {
@@ -12,18 +14,19 @@ object pepe {
         faltas = _faltas
     }
 
-    method sueldo(tipoResultados) {
-        return neto.neto(categoría) + self.bonoResultados(tipoResultados) + self.bonoPresentismo()
+    method sueldo(tipoResultados, tipoPresentismo) {
+        sueldo = categoría.neto() + self.bonoResultados(tipoResultados) + self.bonoPresentismo(tipoPresentismo)
+        return sueldo
     }
 
     method bonoResultados(tipo) {
         if (tipo == "porcentaje")
         {
-            return neto.neto(categoría) * 0.1
+            return categoría.neto() * 0.1
         }
         else if (tipo == "fijo")
         {
-            return 3000
+            return 800
         }
         else
         {
@@ -31,8 +34,17 @@ object pepe {
         }
     }
 
-    method bonoPresentismo() {
-        return self.bonoPresentismoNormal() + self.bonoPresentismoAjuste() + self.bonoPresentismoDemagogico()
+    method bonoPresentismo(_tipo) {
+        if (_tipo == "normal")
+        {
+            return self.bonoPresentismoNormal()
+        } else if (_tipo == "ajuste") {
+            return self.bonoPresentismoAjuste()
+        } else if (_tipo == "demagógico") {
+            return self.bonoPresentismoDemagogico()
+        } else {
+            return 0
+        }
     }
 
     method bonoPresentismoNormal() {
@@ -54,7 +66,7 @@ object pepe {
     }
 
     method bonoPresentismoDemagogico() {
-        if (neto.neto(categoría) < 18000) {
+        if (categoría.neto() < 18000) {
             return 500
         } else {
             return 300
@@ -62,16 +74,26 @@ object pepe {
     }
 }
 
-object neto {
+object cadete {
+    var neto = 20000
 
-    method cadete() {
-        return 20000
-    }
-    method gerente() {
-        return 15000
+    method neto() {
+        return neto
     }
 
-    method neto(categoría) {
-        return categoría
+    method neto(_neto) {
+        neto = _neto
+    }
+}
+
+object gerente {
+    var neto = 15000
+
+    method neto() {
+        return neto
+    }
+
+    method neto(_neto) {
+        neto = _neto
     }
 }
