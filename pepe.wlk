@@ -20,49 +20,11 @@ object pepe {
     }
 
     method bonoResultados(tipo) {
-        if (tipo == "porcentaje")
-        {
-            return categoría.neto() * 0.1
-        }
-        else if (tipo == "fijo")
-        {
-            return 800
-        }
-        else
-        {
-            return 0
-        }
+        return tipo.bono(categoría)
     }
 
-    method bonoPresentismo(_tipo) {
-        if (_tipo == "normal")
-        {
-            return self.bonoPresentismoNormal()
-        } else if (_tipo == "ajuste") {
-            return self.bonoPresentismoAjuste()
-        } else if (_tipo == "demagógico") {
-            return self.bonoPresentismoDemagogico()
-        } else {
-            return 0
-        }
-    }
-
-    method bonoPresentismoNormal() {
-        if (faltas == 0) {
-            return 2000
-        } else if (faltas == 1) {
-            return 1000
-        } else {
-            return 0
-        }
-    }
-
-    method bonoPresentismoAjuste() {
-        if (faltas == 0) {
-            return 100
-        } else {
-            return 0
-        }
+    method bonoPresentismo(tipo) {
+        return tipo.bono(faltas, categoría)
     }
 
     method bonoPresentismoDemagogico() {
@@ -95,5 +57,60 @@ object gerente {
 
     method neto(_neto) {
         neto = _neto
+    }
+}
+
+object bonoResultadosPorcentaje {
+    method bono(categoría) {
+        return categoría.neto() * 0.1
+    }
+}
+
+object bonoResultadosFijo {
+    method bono(categoría) {
+        return 800
+    }
+}
+
+object bonoPresentismoNormal {
+    const ceroFaltas = 2000
+    const unaFalta = 1000
+
+    method bono(faltas, categoría) {
+        if (faltas == 0) {
+            return ceroFaltas
+        } else if (faltas == 1) {
+            return unaFalta
+        } else {
+            return 0
+        }
+    }
+}
+
+object bonoPresentismoAjuste {
+    const ceroFaltas = 100
+
+    method bono(faltas, categoría) {
+        if (faltas == 0) {
+            return ceroFaltas
+        } else {
+            return 0
+        }
+    }
+}
+
+object bonoPresentismoDemagógico {
+    method bono(faltas, categoría) {
+        if (categoría.neto() < 18000) {
+            return 500
+        } else {
+            return 300
+        }
+    }
+}
+
+object bonoPresentismoNulo {
+    method bono(faltas, categoría) {
+        return 0
     }
 }
