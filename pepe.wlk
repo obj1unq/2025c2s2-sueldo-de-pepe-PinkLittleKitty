@@ -2,7 +2,6 @@ import wollok.vm.*
 object pepe {
     var faltas = 0
     var categoría = cadete
-    var sueldo = 0
 
     method categoría(_categoría)
     {
@@ -15,16 +14,7 @@ object pepe {
     }
 
     method sueldo(tipoResultados, tipoPresentismo) {
-        sueldo = categoría.neto() + self.bonoResultados(tipoResultados) + self.bonoPresentismo(tipoPresentismo)
-        return sueldo
-    }
-
-    method bonoResultados(tipo) {
-        return tipo.bono(categoría)
-    }
-
-    method bonoPresentismo(tipo) {
-        return tipo.bono(faltas, categoría)
+        return categoría.neto() + tipoResultados.bono(categoría)+ tipoPresentismo.bono(faltas, categoría)
     }
 }
 
