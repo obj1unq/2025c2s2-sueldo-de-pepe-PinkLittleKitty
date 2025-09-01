@@ -32,7 +32,7 @@ Pepe tiene un bono por resultados que va cambiando a lo largo del tiempo. Sabemo
 
 Al igual que el Bono por resultados, Pepe posee un bono por presentismo que puede variar mes a mes. Existen varios **bonos por presentismo**:</br>
 * _Normal_: $2000 pesos si la persona a quien se aplica no faltó nunca, $1000 si faltó sólo un día, $0 en cualquier otro caso. 
-* _Ajuste_: $100 pesos si el empleado no faltón nunca, $0 en cualquier otro caso. 
+* _Ajuste_: $100 pesos si el empleado no faltó nunca, $0 en cualquier otro caso. 
 * _Demagógico_: $500 pesos si el neto es menor a 18000, $300 en caso contrario. Para este bono no importa cuántas veces faltó el emplado.
 * _Nulo_: nada. 
 
@@ -45,11 +45,11 @@ Al igual que el Bono por resultados, Pepe posee un bono por presentismo que pued
 1. Si pepe es cadete, tiene el bono resultado de monto fijo, y bono presentismo normal. Simular que faltó 3 días.
 Debería tener $20800 de sueldo.
 
-1. Si pepe es gerente, tiene el bono resultado por porcentaje, y bono de presentismo nulo. El sueldo debe dar $16500.
+2. Si pepe es gerente, tiene el bono resultado por porcentaje, y bono de presentismo nulo. El sueldo debe dar $16500.
 
-1. Si pepe es cadete,  tiene bono de resultados por porcentaje, bono por presentismo normal, nunca faltó. Debería tener $24000 de sueldo.
+3. Si pepe es cadete,  tiene bono de resultados por porcentaje, bono por presentismo normal, nunca faltó. Debería tener $24000 de sueldo.
 
-1. Si pepe es cadete, tiene bono de resultados por porcentaje, bono por presentismo normal, falto 1 día. Debería tener $23000 de sueldo.
+4. Si pepe es cadete, tiene bono de resultados por porcentaje, bono por presentismo normal, falto 1 día. Debería tener $23000 de sueldo.
 
 
 # Bonus
@@ -63,14 +63,14 @@ A su vez, su neto es un 30% superior a lo que indica su categoría. P.ej. si Sof
 **Atención**: si Pepe, o cualquier otra persona que se agregue, es cadete, su neto es 20000. El incremento del 30% se aplica _solamente_ a Sofía. 
 
 
-1. Agregar las siguientes categorías
+2. Agregar las siguientes categorías
 	- **vendedor**: <br> su neto es de 16000 pesos. Si hay muchas ventas, hay un aumento de 25% (multiplicar por 1.25), o sea pasa a 20000. <br> El objeto que representa a esta categoría tiene que entender los mensajes `activarAumentoPorMuchasVentas()` y `desactivarAumentoPorMuchasVentas()`.
   
 	- **medio tiempo**: en realidad, es un modificador sobre otra categoría, que se asigna enviando el mensaje `medioTiempo.categoriaBase(categoria)`. Indica que la persona trabaja medio tiempo, por lo tanto su neto es la mitad (dividir por dos) de lo que indica la categoría base. <br>
   P.ej. si definimos `medioTiempo.categoriaBase(gerente)`, entonces el neto de `medioTiempo` es 7500 (la mitad de 15000).
   
     
-1. Agregar dos personas más, según lo que se detalla a continuación.
+3. Agregar dos personas más, según lo que se detalla a continuación.
 	- **Roque**, que en lugar de asignársele una categoría, se establece un neto de 28000 pesos. <br> 
 	El sueldo se calcula como ```neto + bono por resultados + 9000 pesos```. <br> 
 	Para el bono por resultados, se usan las mismas opciones que para Pepe.
@@ -80,7 +80,7 @@ A su vez, su neto es un 30% superior a lo que indica su categoría. P.ej. si Sof
 	Para el bono por presentismo, usar las mismas opciones que para Pepe. Se sabe que Ernesto no falta nunca.
 	
 	
-1. Caso de prueba:
+4. Caso de prueba:
 	- La categoría base de _medio tiempo_ es _cadete_.
 	- Pepe tiene categoría medio tiempo (o sea, es cadete y trabaja medio tiempo), tiene bono por resultados de porcentaje, y bono por presentismo demagógico. Hacer que falte una vez.
 	- Roque tiene bono por resultados monto fijo. 
