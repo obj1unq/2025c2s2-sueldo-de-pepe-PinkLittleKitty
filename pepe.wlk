@@ -26,14 +26,6 @@ object pepe {
     method bonoPresentismo(tipo) {
         return tipo.bono(faltas, categoría)
     }
-
-    method bonoPresentismoDemagogico() {
-        if (categoría.neto() < 18000) {
-            return 500
-        } else {
-            return 300
-        }
-    }
 }
 
 object cadete {
